@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int main() {
+void normalPointer() {
     int v;
     int *vPtr;
     v = 15;
@@ -36,7 +36,62 @@ int main() {
     cout << "A[1] (array) = " << A[1] << endl;
     cout << "A[1] pointer = " << *(A+1) << endl;
     cout << "++p, address = " << ++p << ", value = " << *p << endl; 
-    cout << "++*p, value = " << ++*p << ends;
+    cout << "++*p, value = " << ++*p << endl;
+}
+
+void dynamycAllocation() {
+    cout << "--- malloc ---" << endl;
+    int *ptr = (int*)malloc(5*sizeof(int));
+    cout << "size of *ptr = " << sizeof(ptr) << endl;
+    
+    for(int i=0; i<5; i++) {
+        ptr[i] = i+1;
+    }
+
+    for(int i=0; i<5; i++) {
+        cout << ptr[i] << ", ";
+    }
+    cout << endl;
+
+    free(ptr);
+
+    cout << "--- calloc ---" << endl;
+    int *ptr1 = (int*)calloc(5, sizeof(int));
+    cout << "size of *ptr1 = " << sizeof(ptr1) << endl;
+
+    for(int i=0; i<5; i++) {
+        ptr1[i] = i+1;
+    }
+
+    for(int i=0; i<5; i++) {
+        cout << ptr1[i] << ", ";
+    }
+    cout << endl;
+
+    free(ptr1);
+
+    cout << "--- new ---" << endl;
+    int *ptr2 = new int[5];
+    cout << "size of *ptr2 = " << sizeof(ptr2) << endl;
+
+    for(int i=0; i<5; i++) {
+        ptr2[i] = i+1;
+    }
+
+    int len = sizeof(ptr2) / sizeof(int);
+    cout << "size of ptr2 = " << len << endl;
+
+    for(int i=0; i<5; i++) {
+        cout << ptr2[i] << ", ";
+    }
+    cout << endl;
+
+    free(ptr2);
+}
+
+int main() {
+    normalPointer();
+    dynamycAllocation();
 
     return 0;
 }
