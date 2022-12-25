@@ -6,6 +6,11 @@ struct Book {
     int bookId;
 };
 
+typedef struct {
+    char name[50];
+    int age;
+} Person;
+
 int main() {
     struct Book book1;
     struct Book book2;
@@ -20,6 +25,13 @@ int main() {
 
     struct Book *book3 = &book2;
     cout << "book3 title = " << book3->title << endl;
+
+    Person person;
+    strcpy_s(person.name, "Joe");
+    person.age = 12;
+
+    cout << "person's name = " << person.name << endl;
+    cout << "person's age = " << person.age << endl;
 
     return 0;
 }
