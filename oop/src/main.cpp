@@ -8,5 +8,8 @@ int main() {
     int perimeter = rect->getPerimeter();
     cout << "Area = " << area << endl;
     cout << "Perimeter = " << perimeter << endl;
+
+    delete rect;
+    
     return 0;
 }
